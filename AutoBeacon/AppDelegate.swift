@@ -13,13 +13,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet var statusMenu: NSMenu!
 
-    var statusItem: NSStatusItem = NSStatusItem()
-    var popover: NSPopover = NSPopover()
+    @objc var statusItem: NSStatusItem = NSStatusItem()
+    @objc var popover: NSPopover = NSPopover()
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        let statusBar = NSStatusBar.system()
+        let statusBar = NSStatusBar.system
 
-        statusItem = statusBar.statusItem(withLength: NSVariableStatusItemLength)
+        statusItem = statusBar.statusItem(withLength: NSStatusItem.variableLength)
         statusItem.title = "AutoBeacon"
 //        statusItem.menu = statusMenu
         statusItem.action = #selector(self.togglePopover(sender:))
@@ -32,7 +32,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Insert code here to tear down your application
     }
 
-    func togglePopover(sender: AnyObject?) {
+    @objc func togglePopover(sender: AnyObject?) {
         if popover.isShown {
             popover.performClose(sender)
         } else {

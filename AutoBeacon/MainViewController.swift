@@ -17,7 +17,7 @@ class MainViewController: NSViewController, CBPeripheralManagerDelegate {
     @IBOutlet weak var broadcastButton: NSButton!
     @IBOutlet weak var statusLabel: NSTextField!
 
-    var manager = CBPeripheralManager()
+    @objc var manager = CBPeripheralManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +36,7 @@ class MainViewController: NSViewController, CBPeripheralManagerDelegate {
         }
     }
 
-    func updateStatus(_ peripheral: CBPeripheralManager) {
+    @objc func updateStatus(_ peripheral: CBPeripheralManager) {
         var state = ""
         switch peripheral.state {
         case .unknown: state = "Unknown"
@@ -97,6 +97,6 @@ class MainViewController: NSViewController, CBPeripheralManagerDelegate {
     }
 
     @IBAction func performQuit(sender: AnyObject?) {
-        NSApplication.shared().terminate(self)
+        NSApplication.shared.terminate(self)
     }
 }
